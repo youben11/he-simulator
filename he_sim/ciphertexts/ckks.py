@@ -6,6 +6,7 @@ class CKKS:
         self._data = data
         self._slots = poly_mod_degree // 2
         self._scale_data(scale)
+        self._scale = scale
         if replicated:
             self._replicate_data()
         else:
@@ -29,3 +30,6 @@ class CKKS:
     def _scale_data(self, scale):
         for i in range(len(self._data)):
             self._data[i] *= scale
+
+    def decrypt(self):
+        return self._data

@@ -1,4 +1,4 @@
-from he_sim.ckks import CKKS
+from he_sim.ciphertexts import CKKS
 import pytest
 
 

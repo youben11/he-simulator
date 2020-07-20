@@ -1,4 +1,7 @@
-class CKKS:
+from he_sim.ciphertexts.ciphertext import Ciphertext
+
+
+class CKKS(Ciphertext):
     """Simulation of a CKKS ciphertext with batching."""
 
     def __init__(self, data, poly_mod_degree=8192, scale=2 ** 40, replicated=False):
@@ -33,3 +36,30 @@ class CKKS:
 
     def decrypt(self):
         return self._data
+
+    def add(self, other):
+        pass
+
+    def add_(self, other):
+        pass
+
+    def sub(self, other):
+        pass
+
+    def sub_(self, other):
+        pass
+
+    def mul(self, other):
+        pass
+
+    def mul_(self, other):
+        pass
+
+    def negate(self, other):
+        pass
+
+    def negate_(self, other):
+        pass
+
+    def rotate(self, rotation):
+        pass

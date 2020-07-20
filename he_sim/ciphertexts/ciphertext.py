@@ -40,6 +40,10 @@ class Ciphertext(abc.ABC):
     def rotate(self, rotation):
         pass
 
+    @abc.abstractmethod
+    def rotate_(self, rotation):
+        pass
+
     def __add__(self, other):
         return self.add(other)
 

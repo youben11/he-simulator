@@ -1,4 +1,5 @@
 from he_sim.ciphertexts.ciphertext import Ciphertext
+from he_sim.benchmark import counter_benchmark
 
 
 class CKKS(Ciphertext):
@@ -37,29 +38,42 @@ class CKKS(Ciphertext):
     def decrypt(self):
         return self._data
 
+    @counter_benchmark
     def add(self, other):
         pass
 
+    @counter_benchmark
     def add_(self, other):
         pass
 
+    @counter_benchmark
     def sub(self, other):
         pass
 
+    @counter_benchmark
     def sub_(self, other):
         pass
 
+    @counter_benchmark
     def mul(self, other):
         pass
 
+    @counter_benchmark
     def mul_(self, other):
         pass
 
+    @counter_benchmark
     def negate(self, other):
         pass
 
+    @counter_benchmark
     def negate_(self, other):
         pass
 
+    @counter_benchmark
     def rotate(self, rotation):
+        pass
+
+    @counter_benchmark
+    def rotate_(self, rotation):
         pass

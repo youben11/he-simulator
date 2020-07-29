@@ -17,7 +17,7 @@ class Ciphertext(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def negate(self, other):
+    def negate(self):
         pass
 
     @abc.abstractmethod
@@ -33,7 +33,7 @@ class Ciphertext(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def negate_(self, other):
+    def negate_(self):
         pass
 
     @abc.abstractmethod
@@ -61,3 +61,12 @@ class Ciphertext(abc.ABC):
 
     def __imul__(self, other):
         return self.mul_(other)
+
+    def __radd__(self, other):
+        return self.add(other)
+
+    def __rsub__(self, other):
+        return self.negate() + other
+
+    def __rmul__(self, other):
+        return self.mul(other)

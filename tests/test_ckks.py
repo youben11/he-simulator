@@ -89,7 +89,7 @@ def test_mul(data, rotation, poly_mod_degree, scale):
     data_copy = copy(data)
     ct = CKKS(data, poly_mod_degree, scale, replicated=True)
     replicated = (data * (ct._slots // len(data) + 1))[: ct._slots]
-    expected = replicated[rotation % ct._slots:] + replicated[: rotation % ct._slots]
+    expected = replicated[rotation % ct._slots :] + replicated[: rotation % ct._slots]
     # rotate
     result = ct.rotate(rotation)
     assert expected == result.decrypt()

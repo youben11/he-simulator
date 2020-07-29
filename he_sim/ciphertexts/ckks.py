@@ -59,7 +59,7 @@ class CKKS(Ciphertext):
         if isinstance(other, list):
             if len(other) > self._slots:
                 raise ValueError(f"Plaintext vector is bigger than {self._slots}")
-            other = self._plaintext(other)
+            other = self._plaintext(other, replicated=True)
 
         elif isinstance(other, CKKS):
             if self._slots != other._slots:
@@ -127,5 +127,5 @@ class CKKS(Ciphertext):
     @counter_benchmark
     def rotate_(self, rotation):
         rotation %= self._slots
-        self._data = self._data[rotation:] + self._data[: rotation]
+        self._data = self._data[rotation:] + self._data[:rotation]
         return self

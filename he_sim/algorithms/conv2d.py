@@ -43,12 +43,13 @@ def ckks_conv2d(
     # encode matrix and kernel
     x, k = padded_memory_strided_im2col(matrix, kernel, stride)
     x, k = x.tolist(), k.tolist()
-    chunk_size = kernel.size
+    chunk_size = len(x) // len(k)
     chunk_nb = len(k)
     # encryption
     ct = CKKS(x, poly_mod_degree, scale, replicated=True)
     # replicating chunks of the kernel [k[i] * chunk_size for i in chunk_nb]
     replicated_kernel = [k[i] for i in range(chunk_nb) for j in range(chunk_size)]
+    assert len(x) == len(replicated_kernel)
     # element-wise multiplication
     ct *= replicated_kernel
     # rotate and sum
